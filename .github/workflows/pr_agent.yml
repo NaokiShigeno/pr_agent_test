@@ -3,9 +3,10 @@ name: pr-agent
 on:
 #   pull_request:
 #     types: [opened, reopened, synchronize]
-   issue_comment:
-     types: [created, edited]
-
+#   issue_comment:
+#     types: [created, edited]
+    workflow_dispatch:
+    
 permissions:
   pull-requests: write
   issues: write
