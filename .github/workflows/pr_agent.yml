@@ -14,7 +14,7 @@ jobs:
   pr_agent:
     runs-on: ubuntu-latest
     name: Run PR Agent
-    if: ${{ github.event.sender.type != 'Bot' }}
+    if: ${{ github.event.sender.type != 'Bot' }} && ${{ github.event.comment.body == 'run-deploy' }} # 特定のコメント内容
     steps:
       - id: pr-agent
         uses: Codium-ai/pr-agent@main
