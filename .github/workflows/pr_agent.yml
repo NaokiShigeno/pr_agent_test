@@ -14,7 +14,7 @@ jobs:
   pr_agent:
     runs-on: ubuntu-latest
     name: Run PR Agent
-    if: ${{ github.event.sender.type != 'Bot' && contains(github.event.comment.body, 'PR-agent')}}
+    if: ${{ github.event.sender.type != 'Bot' && (startWith(github.event.comment.body, '/describe') || startWith(github.event.comment.body, '/review') || startWith(github.event.comment.body, '/improve')  || startWith(github.event.comment.body, '/ask') || startWith(github.event.comment.body, '/update_changelog') || startWith(github.event.comment.body, '/similar_issue') || startWith(github.event.comment.body, '/help') )}}
     steps:
       - id: pr-agent
         uses: Codium-ai/pr-agent@main
