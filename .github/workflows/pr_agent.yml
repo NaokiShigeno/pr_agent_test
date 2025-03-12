@@ -5,7 +5,7 @@ on:
     types: [opened]
   issue_comment:
     types: [created, edited]
-    
+
 permissions:
   pull-requests: write
   issues: write
@@ -13,27 +13,34 @@ permissions:
 jobs:
   pr_agent:
     runs-on: ubuntu-latest
-    name: Run PR Agent
-    if: >-
-       ${{ github.event.sender.type != 'Bot'
-          && (github.event.issue.pull_request
-             || (!github.event.issue.pull_request
-                && (startsWith(github.event.comment.body, '/describe')
-                   || startsWith(github.event.comment.body, '/review')
-                   || startsWith(github.event.comment.body, '/improve')
-                   || startsWith(github.event.comment.body, '/ask')
-                   || startsWith(github.event.comment.body, '/update_changelog')
-                   || startsWith(github.event.comment.body, '/similar_issue')
-                   || startsWith(github.event.comment.body, '/help')
-                   )
-                )
-             )
-       }}
+    if: ${{ github.event.sender.type != 'Bot' }}
     steps:
-      - id: pr-agent
+      - name: Run PR Agent on Pull Request
+        if: ${{ github.event_name == 'pull_request' }}
         uses: Codium-ai/pr-agent@main
         env:
-          OPENAI_KEY: ${{ secrets.OPENAI_KEY }}
+          OPENAI_KEY: ${{ secrets.OPENAI_API_KEY }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          PR_REVIEWER.EXTRA_INSTRUCTIONS: '日本語で記述してください。'
-          PR_DESCRIPTION.EXTRA_INSTRUCTIONS: '全て日本語で記述してください。'
+          PR_REVIEWER.EXTRA_INSTRUCTIONS: "日本語で記述してください。"
+          PR_DESCRIPTION.EXTRA_INSTRUCTIONS: "全て日本語で記述してください。"
+
+      - name: Run PR Agent on Issue Comment
+        if: >-
+          ${{ github.event_name == 'issue_comment'
+              && (contains(github.event.comment.body, '/describe')
+                || contains(github.event.comment.body, '/review')
+                || contains(github.event.comment.body, '/improve')
+                || contains(github.event.comment.body, '/ask')
+                || contains(github.event.comment.body, '/update_changelog')
+                || contains(github.event.comment.body, '/similar_issue')
+                || contains(github.event.comment.body, '/help')
+                )
+              )
+          }}
+        uses: Codium-ai/pr-agent@main
+        env:
+          OPENAI_KEY: ${{ secrets.OPENAI_API_KEY }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          PR_REVIEWER.EXTRA_INSTRUCTIONS: "日本語で記述してください。"
+          PR_DESCRIPTION.EXTRA_INSTRUCTIONS: "全て日本語で記述してください。"
+      
