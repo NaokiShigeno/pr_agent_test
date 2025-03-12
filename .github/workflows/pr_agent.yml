@@ -25,18 +25,17 @@ jobs:
           PR_DESCRIPTION.EXTRA_INSTRUCTIONS: "全て日本語で記述してください。"
 
       - name: Run PR Agent on Issue Comment
-        if: >-
-          ${{ github.event_name == 'issue_comment'
-              && (contains(github.event.comment.body, '/describe')
-                || contains(github.event.comment.body, '/review')
-                || contains(github.event.comment.body, '/improve')
-                || contains(github.event.comment.body, '/ask')
-                || contains(github.event.comment.body, '/update_changelog')
-                || contains(github.event.comment.body, '/similar_issue')
-                || contains(github.event.comment.body, '/help')
-                )
+        if: >
+          (github.event_name == 'issue_comment'
+            && (contains(github.event.comment.body, '/describe')
+              || contains(github.event.comment.body, '/review')
+              || contains(github.event.comment.body, '/improve')
+              || contains(github.event.comment.body, '/ask')
+              || contains(github.event.comment.body, '/update_changelog')
+              || contains(github.event.comment.body, '/similar_issue')
+              || contains(github.event.comment.body, '/help')
               )
-          }}
+            )
         uses: Codium-ai/pr-agent@main
         env:
           OPENAI_KEY: ${{ secrets.OPENAI_API_KEY }}
