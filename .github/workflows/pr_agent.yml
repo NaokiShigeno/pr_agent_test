@@ -1,8 +1,8 @@
 name: pr-agent
 
 on:
-  pull_request:
-    types: [opened, reopened, synchronize]
+#  pull_request:
+#    types: [opened, reopened, synchronize]
   issue_comment:
     types: [created, edited]
 
@@ -34,5 +34,5 @@ jobs:
         env:
           OPENAI_KEY: ${{ secrets.OPENAI_KEY }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          PR_REVIEWER.EXTRA_INSTRUCTIONS: "日本語で記述してください。"
-          PR_DESCRIPTION.EXTRA_INSTRUCTIONS: "全て日本語で記述してください。"
+#          PR_REVIEWER.EXTRA_INSTRUCTIONS: "日本語で記述してください。"
+#          PR_DESCRIPTION.EXTRA_INSTRUCTIONS: "全て日本語で記述してください。"
