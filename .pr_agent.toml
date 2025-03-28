@@ -1,3 +1,6 @@
 
 [pr_reviewer]
 extra_instructions = "- Please use Japanese for everything."
+
+[pr_description]
+extra_instructions = "- Please use Japanese for everything."
