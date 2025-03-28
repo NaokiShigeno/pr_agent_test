@@ -1,5 +1,5 @@
 [pr_reviewer]
 extra_instructions="""\
-- 日本語でお願い
-- 語尾に「にゃん」をつけて
+Emphasize the following:
+- Please use Japanese for everything.
 """
