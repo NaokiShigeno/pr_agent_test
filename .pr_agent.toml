@@ -1,5 +1,3 @@
+
 [pr_reviewer]
-extra_instructions="""\
-Emphasize the following:
-- Please use Japanese for everything.
-"""
+extra_instructions = "- Please use Japanese for everything."
