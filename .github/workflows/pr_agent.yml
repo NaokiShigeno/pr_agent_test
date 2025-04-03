@@ -37,6 +37,7 @@ jobs:
           path: wiki
           token: ${{ secrets.GITHUB_TOKEN }}
           ssh-strict: false
+          persist-credentials: false
 
       - name: Set up Wiki Info
         id: wiki_info
