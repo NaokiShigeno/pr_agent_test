@@ -1,6 +1,4 @@
 [pr_reviewer]
 extra_instructions="""\
-- instruction a
-- instruction b
-...
+日本語で記述してください。
 """
