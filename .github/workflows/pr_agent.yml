@@ -35,7 +35,7 @@ jobs:
           ref: main # 任意のブランチを指定（GitHub の default は master）
           repository: ${{ github.repository }}.wiki
           path: wiki
-          token: ${{ secrets.GITHUB_TOKEN }}
+          token: ${{ secrets.PA_TOKEN }}
           ssh-strict: false
           persist-credentials: false
 
