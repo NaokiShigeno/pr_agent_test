@@ -40,10 +40,16 @@ jobs:
             local file_path=$2
             local prompt=$(cat "$file_path")
             echo "${var_name}<<EOF" >> $GITHUB_ENV
-            echo "prompt" >> $GITHUB_ENV
+            echo "${prompt}" >> $GITHUB_ENV
             echo "EOF" >> $GITHUB_ENV
           }
           set_env_var_from_file "REVIEW_PROMPT" "./wiki/pr-agent-review-prompt.md"
           set_env_var_from_file "DESCRIBE_PROMPT" "./wiki/pr-agent-describe-prompt.md"
           set_env_var_from_file "IMPROVE_PROMPT" "./wiki/pr-agent-improve-prompt.md"
       
+      - name: List envs
+        run: |
+          echo ${{env.REVIEW_PROMPT}}
+          echo ${{env.DESCRIBE_PROMPT}}
+          echo ${{env.IMPROVE_PROMPT}}
+          echo ${{env}}
