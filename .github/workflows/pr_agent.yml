@@ -9,7 +9,6 @@ on:
 permissions:
   pull-requests: write
   issues: write
-  contents: write
 
 jobs:
   pr_agent:
@@ -33,10 +32,8 @@ jobs:
       - name: Checkout the Wiki repository
         uses: actions/checkout@v4
         with:
-          ref: main # 任意のブランチを指定（GitHub の default は master）
           repository: ${{ github.repository }}.wiki
           path: wiki
-          token: ${{ secrets.PA_TOKEN }}
 
       - name: List files in Wiki Repository
         run: ls wiki
@@ -61,8 +58,6 @@ jobs:
         env:
           OPENAI_KEY: ${{ secrets.OPENAI_KEY }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-#          PR_REVIEWER.EXTRA_INSTRUCTIONS: "日本語で記述してください。"
-#          PR_DESCRIPTION.EXTRA_INSTRUCTIONS: "全て日本語で記述してください。"
 
           # PR_AGENT settings (/review)
           PR_REVIEWER.extra_instructions: |
