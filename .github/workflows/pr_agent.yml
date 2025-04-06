@@ -53,6 +53,13 @@ jobs:
           set_env_var_from_file "DESCRIBE_PROMPT" "./wiki/pr_agent_describe_prompt.md"
           set_env_var_from_file "IMPROVE_PROMPT" "./wiki/pr_agent_improve_prompt.md"
 
+      - name: List envs
+        run: |
+          echo ${{env.REVIEW_PROMPT}}
+          echo ${{env.DESCRIBE_PROMPT}}
+          echo ${{env.IMPROVE_PROMPT}}
+          echo ${{env}}
+        
       - name: Run PR Agent
         uses: Codium-ai/pr-agent@main
         env:
