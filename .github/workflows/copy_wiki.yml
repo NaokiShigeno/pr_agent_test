@@ -32,7 +32,7 @@ jobs:
           ref: main # 任意のブランチを指定（GitHub の default は master）
           repository: ${{ github.repository }}.wiki
           path: wiki
-          token: ${{ secrets.PAT3 }}
+          token: ${{ secrets.PAT4 }}
 
       - name: List files in Wiki Repository
         run: ls wiki
