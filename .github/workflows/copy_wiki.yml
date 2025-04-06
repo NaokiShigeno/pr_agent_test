@@ -36,7 +36,7 @@ jobs:
       - uses: actions/checkout@v4
         with:
           ref: main # 任意のブランチを指定（GitHub の default は master）
-          repository: ${{ github.repository }}.wiki
+          repository: ${{ github.repository }}
           path: wiki
           token: ${{ secrets.PA_TOKEN }}
 
