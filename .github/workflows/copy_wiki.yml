@@ -28,10 +28,11 @@ jobs:
           path: wiki
 
       - name: List files in Wiki Repository
-        run: ls wiki
-        
-      - name: List files in Wiki Repository
-        run: ls .
+        run: |
+          ls wiki
+          ls .
+          ls ./
+          ls ./wiki
         
       - name: Set up Wiki Info
         id: wiki_info
@@ -44,7 +45,7 @@ jobs:
             echo "prompt" >> $GITHUB_ENV
             echo "EOF" >> $GITHUB_ENV
           }
-          set_env_var_from_file "REVIEW_PROMPT" "wiki/pr-agent-review-prompt.md"
-          set_env_var_from_file "DESCRIBE_PROMPT" "wiki/pr-agent-describe-prompt.md"
-          set_env_var_from_file "IMPROVE_PROMPT" "wiki/pr-agent-improve-prompt.md"
+          set_env_var_from_file "REVIEW_PROMPT" "./wiki/pr-agent-review-prompt.md"
+          set_env_var_from_file "DESCRIBE_PROMPT" "./wiki/pr-agent-describe-prompt.md"
+          set_env_var_from_file "IMPROVE_PROMPT" "./wiki/pr-agent-improve-prompt.md"
       
