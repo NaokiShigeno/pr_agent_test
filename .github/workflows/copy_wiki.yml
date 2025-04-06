@@ -30,7 +30,7 @@ jobs:
       - name: List files in Wiki Repository
         run: |
           ls -l wiki
-          cat $(realpath wiki/pr-agent-review-prompt.md}
+          cat wiki/pr‐agent‐review‐prompt.md
         
       - name: Set up Wiki Info
         id: wiki_info
